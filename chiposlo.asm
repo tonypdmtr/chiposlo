@@ -263,7 +263,8 @@ INVC:   ROLB
 ;
 ; TABLE WITH ALU OPCODES FOR 8XYN INSTRS
 ;
-JUMP8:  ORG     $C12B
+          ORG     $C12B
+JUMP8:
 ;
 ;     ( FCB     $96         ; LDAA VY 8XY0, HANDLED ABOVE )
         FCB     $9A         ; ORAA VY 8XY1
