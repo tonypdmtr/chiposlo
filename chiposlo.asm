@@ -362,24 +362,20 @@ RANDOM              proc
 ; JUMP TABLE FOR MISCELLANEOUS INSTRNS [FXZZ]
 ;-------------------------------------------------------------------------------
 
-MINJMP              fcb       $07                 ; VX=TIMER
-                    fdb       VTIME
-                    fcb       $0A                 ; VX=KEY
-                    fdb       VKEY
-                    fcb       $15                 ; TIMER=VX
-                    fdb       TIMEV
-                    fcb       $18                 ; TONE=VX
-                    fdb       TONEV
-                    fcb       $1E                 ; I=I+VX
-                    fdb       LETIV
-                    fcb       $29                 ; I=DSPL,VX
-                    fdb       LETDSP
-                    fcb       $33                 ; MI=DEQ,VX
-                    fdb       LETDEQ
-                    fcb       $55                 ; MI=VO:VX
-                    fdb       STORV
-                    fcb       $65                 ; VO:VX=MI
-                    fdb       LOADV
+?                   macro
+                    fcb       ~1~
+                    fdb       ~2~
+                    endm
+
+MINJMP              @?        $07,VTIME           ; VX=TIMER
+                    @?        $0A,VKEY            ; VX=KEY
+                    @?        $15,TIMEV           ; TIMER=VX
+                    @?        $18,TONEV           ; TONE=VX
+                    @?        $1E,LETIV           ; I=I+VX
+                    @?        $29,LETDSP          ; I=DSPL,VX
+                    @?        $33,LETDEQ          ; MI=DEQ,VX
+                    @?        $55,STORV           ; MI=VO:VX
+                    @?        $65,LOADV           ; VO:VX=MI
 
 ;*******************************************************************************
 
