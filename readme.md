@@ -38,11 +38,10 @@ Most CHIP-8 interpreters since, including CHIP-48 and SUPER-CHIP from 1990/1991,
 Build instructions
 ------------------
 
-Assemble using [AS](http://john.ccac.rwth-aachen.de:8000/as/):
+Assemble using [ASM11](http://aspisys.com/asm11.htm):
 
 ```
-as -cpu 6800 CHIPOSLO.asm
-p2bin -l 0 CHIPOSLO.p
+asm11 chiposlo.asm
 ```
 
 The code is a modified version of the CHIPOS code available for download on [Michael J. Bauer's DREAM 6800 website](http://www.mjbauer.biz/DREAM6800.htm). Michael J. Bauer has graciously related to me in private correspondence that the code is in the public domain.
@@ -66,4 +65,4 @@ This might affect programs that do any of the following:
 * Initializes `RNDX` as optional input to the `RANDOM` subroutine at `C132`
 * Call `LETDSP` and expect the resulting hex digit to be output at `0008` rather than `0047`
 
-I am not aware of any affected programs, but if you know of any, please [create an issue](https://github.com/tobiasvl/chiposlo/issues/new). I want CHIPOSLO to be as compatible as possible.
+I am not aware of any affected programs, but if you know of any, please [create an issue](https://github.com/tonypdmtr/chiposlo/issues/new). I want CHIPOSLO to be as compatible as possible.
