@@ -711,17 +711,16 @@ DEL333              proc
 ;*******************************************************************************
                               #Cycles
 DEL167              proc
-                    psha
-                    lda       #200                ; DELAY FOR 1.67 MILLISEC
+                    pshx
+                    ldx       #DELAY@@            ; DELAY FOR 1.67 MILLISEC
                               #Cycles
-Loop@@              deca
-                    nop
+Loop@@              dex
                     bne       Loop@@
                               #temp :cycles
-                    pula
+                    pulx
                     rts
 
-;DELAY@@            equ       167*BUS_KHZ/100-:cycles-:ocycles/:temp
+DELAY@@             equ       167*BUS_KHZ/100-:cycles-:ocycles/:temp
 
 ;*******************************************************************************
 ; TAPE INPUT/OUTPUT ROUTINES
@@ -781,6 +780,8 @@ Loop@@              bsr       DEL333              ; DELAY 1 BIT-TIME
                     pula                          ; RESTORE A
                     ldx       XTEMP               ; RESTORE X
                     rts
+
+;*******************************************************************************
 
 GETKEE              bra       GETKEY              ; FOR INTERLINKING
 
@@ -890,8 +891,7 @@ SHOADR              proc
                     bsr       SHODAT
                     inx                           ; FOINT TO ADRS LS BYTE
                     bsr       SHODAT
-                    bsr       CURSR               ; MOVE CURSOR RIGHT
-                    rts
+                    bra       CURSR               ; MOVE CURSOR RIGHT
 
 ;*******************************************************************************
 
